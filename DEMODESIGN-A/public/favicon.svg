@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#07080D"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" stroke="#C6FF3D" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="14" cy="14" r="3" fill="#C6FF3D"/>
+  <circle cx="50" cy="50" r="3" fill="#7A5CFF"/>
+  <path d="M14 14L23 23M50 50L42 42" stroke="#C6FF3D" stroke-opacity="0.35" stroke-width="1.2"/>
+  <text x="32" y="40" text-anchor="middle" font-family="monospace" font-weight="700" font-size="24" fill="#F2EFE8" letter-spacing="-1">AZ</text>
+</svg>
+

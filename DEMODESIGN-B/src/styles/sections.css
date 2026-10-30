@@ -1,0 +1,1849 @@
+/* =========================================================================
+   Fixed Drafting Navigation Bar
+   ========================================================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 600;
+  background: rgba(237, 233, 223, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.nav-bar {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0.65rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.brand-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.monogram-box {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--ink);
+  background: var(--paper-light);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 2px 2px 0 var(--vermilion);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-text strong {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+.brand-text small {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--ink-muted);
+}
+
+.sheet-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.sheet-nav-list a {
+  padding: 0.34rem 0.58rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.sheet-nav-list a span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--vermilion);
+}
+
+.sheet-nav-list a:hover,
+.sheet-nav-list a.is-current {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.sheet-nav-list a:hover span,
+.sheet-nav-list a.is-current span {
+  color: #ff8c6b;
+}
+
+.nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tool-btn {
+  padding: 0.36rem 0.62rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.tool-btn.is-active {
+  background: var(--vermilion);
+  color: #ffffff;
+}
+
+.tool-btn.is-blueprint {
+  background: var(--blueprint);
+  color: #ffffff;
+  border-color: var(--blueprint);
+}
+
+.rfi-nav-btn {
+  padding: 0.4rem 0.85rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.rfi-nav-btn:hover {
+  background: var(--vermilion);
+}
+
+/* =========================================================================
+   Architectural Sheet Frame & Title Block
+   ========================================================================= */
+main {
+  padding-top: calc(var(--nav-h) + 1.25rem);
+  padding-bottom: 2.5rem;
+}
+
+.drafting-sheet {
+  max-width: var(--container-max);
+  margin: 0 auto clamp(2rem, 4vw, 3.2rem);
+  padding-inline: var(--gutter);
+}
+
+.sheet-frame {
+  position: relative;
+  border: 1.5px solid var(--ink);
+  background: rgba(246, 243, 235, 0.76);
+  box-shadow: 0 10px 30px rgba(16, 16, 16, 0.04);
+}
+
+.sheet-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper-light);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.sheet-sec-tag {
+  font-weight: 600;
+}
+
+.sheet-num-tag {
+  color: var(--vermilion);
+  font-weight: 600;
+}
+
+.sheet-content {
+  padding: clamp(1.4rem, 3.4vw, 2.8rem);
+}
+
+.sheet-heading-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.sheet-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+}
+
+.sheet-subtitle {
+  margin-top: 0.45rem;
+  max-width: 66ch;
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+}
+
+.sheet-title-block {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  border-top: 1.5px solid var(--ink);
+  background: var(--paper-light);
+}
+
+.tb-cell {
+  padding: 0.55rem 1rem;
+  border-right: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tb-cell:last-child {
+  border-right: none;
+}
+
+.tb-cell.accent {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.tb-k {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.tb-cell.accent .tb-k {
+  color: #b8b4aa;
+}
+
+.tb-v {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+/* =========================================================================
+   Signature Business ⇄ Tech Lens Engine
+   ========================================================================= */
+.lens-mode-bar {
+  display: inline-flex;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+}
+
+.lens-switch-btn {
+  padding: 0.4rem 0.78rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  border-right: 1px solid var(--ink);
+}
+
+.lens-switch-btn:last-child {
+  border-right: none;
+}
+
+.lens-switch-btn.is-active[data-lens-mode='business'],
+.lens-switch-btn.is-active[data-lens-mode='lens'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.lens-switch-btn.is-active[data-lens-mode='tech'] {
+  background: var(--blueprint);
+  color: #ffffff;
+}
+
+.lens-stage {
+  position: relative;
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+  background: var(--paper-light);
+}
+
+.business-layer {
+  position: relative;
+  z-index: 1;
+}
+
+.tech-layer {
+  --lx: 260;
+  --ly: 150;
+  --lr: 0px;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-color: var(--blueprint);
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: #ffffff;
+  clip-path: circle(var(--lr) at calc(var(--lx) * 1px) calc(var(--ly) * 1px));
+  transition: opacity 0.25s ease;
+}
+
+.lens-reticle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 2px solid var(--blueprint);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.65), 0 12px 32px rgba(19, 47, 163, 0.32);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.reticle-tag {
+  position: absolute;
+  bottom: -1.45rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 0.14rem 0.48rem;
+  background: var(--blueprint);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* =========================================================================
+   B-S1: Hero Sheet
+   ========================================================================= */
+.hero-blueprint-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: center;
+}
+
+.spec-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.2rem;
+}
+
+.hero-fraunces-h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.85rem, 6.2vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.h1-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.h1-line {
+  display: block;
+}
+
+.arch-word {
+  position: relative;
+  font-style: italic;
+  color: var(--vermilion);
+  display: inline-block;
+}
+
+.arch-underline {
+  position: absolute;
+  left: 0;
+  bottom: -0.04em;
+  width: 100%;
+  height: 0.18em;
+}
+
+.hero-dimension-bar {
+  margin-top: 1.25rem;
+  max-width: 540px;
+}
+
+.dim-svg {
+  width: 100%;
+  height: 22px;
+  display: block;
+}
+
+.dim-label {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--ink-secondary);
+}
+
+.hero-lead {
+  margin-top: 1.25rem;
+  max-width: 54ch;
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+}
+
+.hero-cta-row {
+  margin-top: 1.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.hero-chain-box {
+  margin-top: 1.85rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-hairline);
+}
+
+.chain-flow {
+  margin-top: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.chain-step {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.18rem 0.45rem;
+  border: 1px solid var(--border-hairline);
+  background: var(--paper);
+}
+
+.chain-sep {
+  color: var(--vermilion);
+  font-size: 0.72rem;
+}
+
+/* 3D Isometric Wireframe Box */
+.wireframe-viewport-box {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+}
+
+.wf-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper-light);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+}
+
+.wf-hint {
+  color: var(--vermilion);
+}
+
+.wf-stage-grid {
+  display: grid;
+  grid-template-columns: 1fr 205px;
+  align-items: center;
+}
+
+.wf-canvas-holder {
+  height: 410px;
+  position: relative;
+  cursor: grab;
+}
+
+.wf-canvas-holder:active {
+  cursor: grabbing;
+}
+
+#hero-wireframe-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wf-callouts-col {
+  padding: 0.85rem 0.85rem 0.85rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.iso-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.iso-callout.is-active,
+.iso-callout:hover {
+  border-color: var(--vermilion);
+  background: var(--vermilion-soft);
+}
+
+.leader-svg {
+  width: 28px;
+  height: 10px;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.iso-callout.is-active .leader-svg {
+  color: var(--vermilion);
+}
+
+.callout-code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+.callout-text small {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+  line-height: 1.25;
+}
+
+/* =========================================================================
+   B-S2: Positioning / Manifesto
+   ========================================================================= */
+.pos-editorial-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.pos-sticky-col {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+  border-left: 3px solid var(--vermilion);
+  padding-left: 1rem;
+}
+
+.sticky-sec-no {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--vermilion);
+}
+
+.sticky-sec-title {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  line-height: 1.12;
+  margin-top: 0.35rem;
+}
+
+.sticky-sec-note {
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+.strikethrough-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.9rem);
+  line-height: 1.18;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.struck-wrap {
+  position: relative;
+  color: var(--ink-muted);
+}
+
+.strike-svg {
+  position: absolute;
+  left: -2%;
+  top: 42%;
+  width: 104%;
+  height: 18px;
+}
+
+.handwritten-correction {
+  font-style: italic;
+  color: var(--vermilion);
+  font-weight: 500;
+}
+
+.lead-contrast-pair {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lead-typical,
+.lead-architect {
+  padding: 1.1rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-size: 0.95rem;
+}
+
+.lead-architect {
+  border-width: 1.5px;
+  box-shadow: 3px 3px 0 var(--vermilion);
+  font-weight: 500;
+}
+
+.pos-editorial-para {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.1vw, 1.68rem);
+  line-height: 1.38;
+}
+
+.pos-enterprise-callout {
+  margin-top: 1.4rem;
+  padding: 1.15rem 1.35rem;
+  border-left: 3px solid var(--ink);
+  background: var(--paper);
+}
+
+.pos-enterprise-callout p {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+}
+
+.pos-compare-table {
+  margin-top: 2rem;
+  border: 1.5px solid var(--ink);
+}
+
+.pos-compare-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 1.25fr;
+  border-bottom: 1px solid var(--ink);
+}
+
+.pos-compare-row:last-child {
+  border-bottom: none;
+}
+
+.row-idx {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: var(--paper-card);
+  border-right: 1px solid var(--ink);
+}
+
+.pos-dev-col,
+.pos-arch-col {
+  padding: 0.9rem 1.1rem;
+}
+
+.pos-dev-col {
+  border-right: 1px solid var(--ink);
+  color: var(--ink-muted);
+}
+
+.pos-arch-col {
+  background: var(--paper-light);
+  font-weight: 500;
+}
+
+.principles-section {
+  margin-top: 2.2rem;
+}
+
+.principles-head {
+  margin-bottom: 0.95rem;
+}
+
+.principles-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+}
+
+.principle-spec-box {
+  padding: 1.05rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.spec-code {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--vermilion);
+}
+
+.principle-spec-box h3 {
+  margin-top: 0.4rem;
+  font-size: 0.96rem;
+}
+
+.principle-spec-box p {
+  margin-top: 0.35rem;
+  font-size: 0.84rem;
+  color: var(--ink-secondary);
+}
+
+/* =========================================================================
+   B-S3: Schedule Table (Lens Teaser)
+   ========================================================================= */
+.sched-table {
+  width: 100%;
+}
+
+.sched-head,
+.sched-row {
+  display: grid;
+  grid-template-columns: 52px 1.15fr 1.2fr 1.2fr 98px;
+  align-items: center;
+}
+
+.sched-head {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--paper-card);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+}
+
+.sched-table.is-blueprint .sched-head {
+  background: var(--blueprint-deep);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+  color: #cfe0ff;
+}
+
+.sched-row {
+  border-bottom: 1px solid var(--border-hairline);
+  transition: background 0.2s ease;
+}
+
+.sched-row:last-child {
+  border-bottom: none;
+}
+
+.business-layer .sched-row:hover {
+  background: var(--vermilion-soft);
+}
+
+.sched-table.is-blueprint .sched-row {
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.sched-col {
+  padding: 0.88rem 0.9rem;
+  font-size: 0.86rem;
+}
+
+.col-no {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--vermilion);
+}
+
+.sched-table.is-blueprint .col-no {
+  color: #9dc2ff;
+}
+
+.col-prob {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+}
+
+.sched-table.is-blueprint .col-prob {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.mini-fix-svg {
+  width: 82px;
+  height: 36px;
+  display: block;
+}
+
+/* =========================================================================
+   B-S4: Architectural Drawings (Full Signature Lens)
+   ========================================================================= */
+.drawings-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+
+.drawing-plate {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: clamp(1rem, 2.4vw, 1.75rem);
+}
+
+.plate-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.plate-dwg-no {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--vermilion);
+  font-weight: 600;
+}
+
+.plate-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+  line-height: 1.1;
+  margin-top: 0.25rem;
+}
+
+.plate-stack {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+  margin-top: 0.3rem;
+}
+
+.drawing-lens-stage .business-layer,
+.drawing-lens-stage .tech-layer {
+  padding: 1.15rem 1.35rem;
+}
+
+.dwg-layer-banner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.blueprint-banner {
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  color: #cfe0ff;
+}
+
+.dwg-layer-desc {
+  margin-top: 0.65rem;
+  font-size: 0.88rem;
+  max-width: 78ch;
+}
+
+.dwg-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-block: 0.65rem;
+}
+
+.dwg-packet-line {
+  animation: dashMove 1.8s linear infinite;
+}
+
+@keyframes dashMove {
+  from {
+    stroke-dashoffset: 32;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dwg-callouts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-hairline);
+}
+
+.tech-layer .dwg-callouts-row {
+  border-top-color: rgba(255, 255, 255, 0.28);
+}
+
+.dwg-callout-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+}
+
+.callout-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--vermilion);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.tech-layer .callout-badge {
+  background: #ffffff;
+  color: var(--blueprint);
+}
+
+.dwg-callout-note p {
+  font-size: 0.76rem;
+  opacity: 0.86;
+}
+
+.plate-footer-grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.dwg-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.dwg-metric {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+}
+
+.dwg-metric strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--vermilion);
+}
+
+.dwg-metric span {
+  font-size: 0.72rem;
+  color: var(--ink-secondary);
+}
+
+.plate-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.plate-bullets li {
+  position: relative;
+  padding-left: 1.05rem;
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+}
+
+.plate-bullets li::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  color: var(--vermilion);
+}
+
+.dwg-ext-links {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dwg-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.32rem 0.65rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+}
+
+.dwg-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.plate-caption-strip {
+  padding: 1.1rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.plate-caption-strip p {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+/* =========================================================================
+   B-S5: Dimensions Grid
+   ========================================================================= */
+.dimensions-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.dimension-card {
+  padding: 1.35rem 1.15rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  text-align: center;
+}
+
+.dim-line-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dim-wing {
+  width: 100%;
+  height: 22px;
+}
+
+.dim-number-wrap {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 3.4vw, 3rem);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dim-suffix {
+  color: var(--vermilion);
+}
+
+.dim-caption {
+  margin-top: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+}
+
+.dim-sub {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--vermilion);
+}
+
+.dim-method {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--border-hairline);
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+}
+
+/* =========================================================================
+   B-S6: Schedule of Materials (GSAP Flip)
+   ========================================================================= */
+.mat-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.35rem;
+}
+
+.mat-filter-btn {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.mat-filter-btn.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 0.85rem;
+}
+
+.mat-cell {
+  padding: 1.05rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mat-cell-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mat-code {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--ink-muted);
+}
+
+.mat-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.14rem 0.45rem;
+}
+
+.mat-badge.is-prod {
+  background: var(--vermilion);
+  color: #ffffff;
+}
+
+.mat-badge.is-work {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.mat-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.mat-svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.mat-icon-title h3 {
+  font-size: 1rem;
+}
+
+.mat-note {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+}
+
+/* =========================================================================
+   B-S7: Construction Phases
+   ========================================================================= */
+.const-stage-indicator {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--font-mono);
+}
+
+.const-stage-indicator span {
+  display: block;
+  font-size: 0.58rem;
+  color: var(--ink-muted);
+}
+
+.const-stage-indicator strong {
+  font-size: 0.74rem;
+  color: var(--vermilion);
+}
+
+.construction-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.const-elevation-box {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.2rem);
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 1rem;
+}
+
+.const-iso-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.iso-stage {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.const-elevation-caption {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.const-elevation-caption span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--ink-muted);
+}
+
+.const-elevation-caption strong {
+  font-size: 0.82rem;
+}
+
+.const-phases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.const-phase-card {
+  padding: 1.15rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.const-phase-card.is-active {
+  background: var(--paper-light);
+  border-width: 1.5px;
+  box-shadow: 4px 4px 0 var(--vermilion);
+}
+
+.const-card-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  margin-bottom: 0.45rem;
+}
+
+.const-num {
+  color: var(--vermilion);
+  font-weight: 600;
+}
+
+.const-phase-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+}
+
+.const-happens {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+.const-deliv {
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--border-hairline);
+}
+
+.const-deliv span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--vermilion);
+}
+
+.const-deliv strong {
+  font-size: 0.82rem;
+}
+
+/* =========================================================================
+   B-S8: Revision History Table
+   ========================================================================= */
+.revision-schedule-table {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+}
+
+.rev-head,
+.rev-row {
+  display: grid;
+  grid-template-columns: 90px 150px 1fr 64px;
+  align-items: start;
+}
+
+.rev-head {
+  padding: 0.65rem 1rem;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--paper-card);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.rev-row {
+  position: relative;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.rev-row:last-child {
+  border-bottom: none;
+}
+
+.rev-row.is-latest-rev {
+  background: rgba(255, 77, 28, 0.05);
+}
+
+.rev-cloud-svg {
+  position: absolute;
+  inset: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  pointer-events: none;
+}
+
+.rev-col {
+  padding: 1rem;
+  font-size: 0.88rem;
+}
+
+.rev-code,
+.rev-date,
+.rev-by {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.rev-code {
+  font-weight: 600;
+  color: var(--vermilion);
+}
+
+.rev-desc p {
+  margin-top: 0.3rem;
+  color: var(--ink-secondary);
+}
+
+/* =========================================================================
+   B-S9: Proposed Extension (Monolith ⇄ Distributed Slider)
+   ========================================================================= */
+.morph-workbench {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 1.25rem;
+}
+
+.morph-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.morph-preset {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.morph-preset.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.arch-morph-slider {
+  flex: 1;
+  min-width: 180px;
+  accent-color: var(--vermilion);
+  cursor: pointer;
+}
+
+.morph-diagram-canvas {
+  border: 1px solid var(--border-hairline);
+  background: var(--paper-light);
+}
+
+.morph-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#morph-monolith-group,
+#morph-bridge-group,
+#morph-distributed-group {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.proposed-dash {
+  animation: dashMove 2.2s linear infinite;
+}
+
+.morph-tradeoff-panel {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+}
+
+.tradeoff-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.tradeoff-when {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.tradeoff-notes {
+  margin-top: 0.25rem;
+  font-size: 0.86rem;
+  color: var(--ink-secondary);
+}
+
+.prop-pillars-grid {
+  margin-top: 1.35rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.prop-pillar,
+.prop-status-card {
+  padding: 1rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.prop-pillar h3 {
+  margin-top: 0.35rem;
+  font-size: 0.98rem;
+}
+
+.prop-pillar p,
+.prop-status-card p {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+.prop-status-pair {
+  margin-top: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.honest-spec-callout {
+  margin-top: 1.25rem;
+  padding: 1.15rem 1.4rem;
+  border-left: 4px solid var(--vermilion);
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+}
+
+/* =========================================================================
+   B-S10 & B-S11: RFI Form & Master Title Block Footer
+   ========================================================================= */
+.rfi-master-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.rfi-drawing-form {
+  position: relative;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 1.35rem;
+}
+
+.rfi-form-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--ink-muted);
+}
+
+.rfi-field {
+  margin-bottom: 1rem;
+}
+
+.rfi-field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.rfi-field input,
+.rfi-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+  font-size: 0.9rem;
+}
+
+.rfi-submit-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.rfi-rubber-stamp {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.35rem;
+  padding: 0.55rem 1rem;
+  border: 3px solid var(--vermilion);
+  color: var(--vermilion);
+  background: rgba(246, 243, 235, 0.92);
+  text-align: center;
+  pointer-events: none;
+  transform: rotate(-9deg);
+}
+
+.rfi-rubber-stamp strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+}
+
+.rfi-rubber-stamp span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+
+.rfi-side-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.direct-channels-card,
+.rfi-questions-card {
+  padding: 1.25rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.rfi-email-btn {
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  color: var(--vermilion);
+  text-decoration: underline;
+  word-break: break-all;
+  text-align: left;
+}
+
+.direct-links-row {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.rfi-q-list {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.rfi-q-list li {
+  display: grid;
+  grid-template-columns: 2.8rem 1fr;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.rfi-q-no {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--vermilion);
+  font-weight: 600;
+}
+
+.fit-spec-row {
+  margin-top: 1.35rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1rem;
+}
+
+.fit-spec-cell {
+  padding: 1.15rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.fit-spec-cell ul {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fit-spec-cell li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+.fit-spec-cell.good li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--vermilion);
+  font-weight: 700;
+}
+
+.fit-spec-cell.bad li::before {
+  content: '✕';
+  position: absolute;
+  left: 0;
+  color: var(--ink-muted);
+}
+
+/* Master Title Block Footer */
+.final-titleblock-footer {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.master-tb-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1.1fr 1fr auto;
+  border: 1.5px solid var(--ink);
+  background: var(--paper-light);
+}
+
+.mtb-cell {
+  padding: 0.75rem 1rem;
+  border-right: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mtb-cell:last-child {
+  border-right: none;
+}
+
+.mtb-cell span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--ink-muted);
+}
+
+.mtb-cell strong {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.top-sheet-btn {
+  padding: 0.5rem 0.95rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.top-sheet-btn:hover {
+  background: var(--vermilion);
+}
+
+/* =========================================================================
+   Responsive Breakpoints (Target 390px mobile)
+   ========================================================================= */
+@media (max-width: 1120px) {
+  .sheet-nav-list {
+    display: none;
+  }
+
+  .hero-blueprint-grid,
+  .pos-editorial-layout,
+  .plate-footer-grid,
+  .construction-layout,
+  .rfi-master-grid,
+  .fit-spec-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pos-sticky-col,
+  .const-elevation-box {
+    position: static;
+  }
+
+  .dimensions-plan-grid,
+  .prop-pillars-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .master-tb-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mtb-cell {
+    border-bottom: 1px solid var(--ink);
+  }
+}
+
+@media (max-width: 860px) {
+  .hide-mobile-lens,
+  .hide-sm,
+  #global-lens-toggle {
+    display: none;
+  }
+
+  .wf-stage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wf-canvas-holder {
+    height: 300px;
+  }
+
+  .wf-callouts-col {
+    padding: 0.85rem;
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  /* Convert Schedule Table into clean stacked cards on mobile */
+  .sched-head {
+    display: none;
+  }
+
+  .sched-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.85rem;
+  }
+
+  .sched-col {
+    padding: 0.15rem 0;
+  }
+
+  /* Tech layer on mobile uses crossfade when toggled */
+  .lens-stage[data-active-mode='tech'] .tech-layer {
+    position: relative;
+  }
+
+  .lens-stage[data-active-mode='tech'] .business-layer {
+    display: none;
+  }
+
+  .lead-contrast-pair,
+  .pos-compare-row,
+  .const-phases-grid,
+  .prop-status-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .row-idx,
+  .pos-dev-col {
+    border-right: none;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .rev-head {
+    display: none;
+  }
+
+  .rev-row {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+  }
+
+  .rev-col {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .sheet-title-block {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tb-cell {
+    border-bottom: 1px solid var(--ink);
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-text {
+    display: none;
+  }
+
+  .dimensions-plan-grid,
+  .prop-pillars-grid,
+  .dwg-metrics-strip,
+  .master-tb-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preloader-titleblock {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

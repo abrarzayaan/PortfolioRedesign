@@ -1,0 +1,42 @@
+:root {
+  /* Stage-Specific Narrative Palette (TASK.md §Design C) */
+  --c-cream: #ffe9d6;
+  --c-tomato: #ff5a36;
+  --c-cobalt: #1d3bff;
+  --c-amber: #ffc933;
+  --c-ink: #0b0b0f;
+  --c-ink-soft: #161621;
+  --c-ink-card: #13131d;
+  --c-violet: #7a4dff;
+  --c-violet-deep: #5a2ee2;
+  --c-paper: #edede6;
+  --c-lime: #c6ff3d;
+  --c-white: #ffffff;
+  --c-bone: #f6f3ec;
+
+  /* Ink & Border Tokens */
+  --border-ink: 2.5px solid #0b0b0f;
+  --border-light: 2px solid rgba(255, 255, 255, 0.22);
+  --shadow-hard: 5px 5px 0px #0b0b0f;
+  --shadow-hard-sm: 3px 3px 0px #0b0b0f;
+  --shadow-hard-lg: 8px 8px 0px #0b0b0f;
+  --shadow-lime: 5px 5px 0px #c6ff3d;
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout & Radii */
+  --container-max: 1280px;
+  --gutter: clamp(1.15rem, 3.5vw, 3rem);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease-snappy: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-quality="high">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md. Shah Abrar Zahin: Business Backend Architect — The Request's Journey</title>
+    <meta
+      name="description"
+      content="Follow Order #001 through the operational brain of a business. Portfolio of Md. Shah Abrar Zahin — End-to-End Business Backend Architect (45% faster SQL <500ms, 99.9% uptime)."
+    />
+    <meta
+      name="keywords"
+      content="slow database fix, SQL query optimisation, PostgreSQL expert, Oracle expert, multi-vendor marketplace backend, inventory race condition, Django REST API architecture, data pipeline automation, Power BI dashboards, backend architect Bangladesh, distributed systems consultant"
+    />
+    <meta name="theme-color" content="#FFE9D6" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Md. Shah Abrar Zahin: Business Backend Architect" />
+    <meta
+      property="og:description"
+      content="One customer order travelling end-to-end from API to Database, Queues, Reports, and Business Growth."
+    />
+    <meta property="og:image" content="./og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+    <!-- Fonts: Bricolage Grotesque (Variable wdth + wght), DM Sans, DM Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Md. Shah Abrar Zahin",
+        "jobTitle": "End-to-End Business Backend Architect",
+        "email": "mailto:abrar.bauet@gmail.com",
+        "telephone": "+8801334317864",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dhaka",
+          "addressCountry": "BD"
+        },
+        "sameAs": [
+          "https://github.com/abrarzayaan",
+          "https://www.linkedin.com/in/mdshahabrarzayaan/"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Skip-Journey Accessibility Links (TASK.md §3.5: C: skip-journey link) -->
+    <div class="skip-links-group">
+      <a href="#work" class="skip-link" data-nav-link>Skip to Proof (Stop 03)</a>
+      <a href="#contact" class="skip-link" data-nav-link>Skip Journey → Contact</a>
+    </div>
+
+    <!-- Persistent WebGL Liquid Stage Shader Canvas -->
+    <div id="liquid-stage-wrap" aria-hidden="true">
+      <canvas id="liquid-canvas"></canvas>
+    </div>
+
+    <!-- Signature "Ride the Packet" Viewport SVG Trail & Glowing Packet -->
+    <div id="journey-overlay" class="journey-overlay" aria-hidden="true">
+      <svg id="journey-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path
+          id="journey-guide-path"
+          d="M 830 140 C 920 240, 120 310, 160 430 C 200 545, 860 585, 840 700 C 820 815, 160 855, 500 960"
+          fill="none"
+          stroke="rgba(11,11,15,0.12)"
+          stroke-width="2.5"
+          stroke-dasharray="6 8"
+        />
+        <path
+          id="journey-active-trail"
+          d="M 830 140 C 920 240, 120 310, 160 430 C 200 545, 860 585, 840 700 C 820 815, 160 855, 500 960"
+          fill="none"
+          stroke="#FF5A36"
+          stroke-width="5"
+          stroke-linecap="round"
+        />
+      </svg>
+      <div id="riding-packet" class="riding-packet">
+        <span class="packet-core"></span>
+        <span class="packet-tag" id="riding-packet-tag">#001</span>
+      </div>
+    </div>
+
+    <!-- Custom Playful Tactile Cursor -->
+    <div id="journey-cursor" class="journey-cursor" aria-hidden="true">
+      <span class="j-cursor-dot"></span>
+      <span class="j-cursor-pill" id="j-cursor-pill"></span>
+    </div>
+
+    <!-- C-S0: Preloader ("Order #001 placed…") -->
+    <div id="preloader" class="preloader" role="status" aria-live="polite">
+      <div class="preloader-box">
+        <div class="preloader-packet-wrap">
+          <svg class="preloader-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="4" />
+            <circle
+              id="preloader-ring-circle"
+              cx="60"
+              cy="60"
+              r="50"
+              fill="none"
+              stroke="#C6FF3D"
+              stroke-width="4.5"
+              stroke-linecap="round"
+              transform="rotate(-90 60 60)"
+            />
+          </svg>
+          <div class="preloader-packet-ball"></div>
+        </div>
+        <p class="preloader-order-txt" id="preloader-order-txt">Order #001 placed…</p>
+        <span class="preloader-pct" id="preloader-pct">0%</span>
+        <p class="preloader-architect">Md. Shah Abrar Zahin · Business Backend Architect</p>
+      </div>
+    </div>
+
+    <!-- Fixed Header Navigation -->
+    <header class="site-header" id="site-header">
+      <nav class="nav-bar" aria-label="Journey Stops Navigation">
+        <a href="#hero" class="brand-pill" data-nav-link aria-label="Md. Shah Abrar Zahin Home">
+          <span class="az-badge">AZ</span>
+          <span class="packet-hud-readout" id="packet-stop-hud">STOP 00 · CUSTOMER</span>
+        </a>
+
+        <ul class="stop-nav-links" id="stop-nav-links">
+          <li><a href="#positioning" data-nav-link><span>01</span>Edge</a></li>
+          <li><a href="#services" data-nav-link><span>02</span>API</a></li>
+          <li><a href="#work" data-nav-link><span>03</span>Queue</a></li>
+          <li><a href="#numbers" data-nav-link><span>05</span>DB Race</a></li>
+          <li><a href="#toolkit" data-nav-link><span>06</span>Physics</a></li>
+          <li><a href="#process" data-nav-link><span>07</span>Receipt</a></li>
+          <li><a href="#direction" data-nav-link><span>08</span>Scale</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button
+            type="button"
+            id="sound-toggle"
+            class="pill-ctrl"
+            aria-pressed="false"
+            title="Toggle UI Sound (Muted by default)"
+          >
+            <span id="sound-label">SFX OFF</span>
+          </button>
+          <button
+            type="button"
+            id="quality-toggle"
+            class="pill-ctrl hide-xs"
+            title="Toggle Shader & Physics Tier"
+          >
+            <span id="quality-label">FX: HIGH</span>
+          </button>
+          <a href="#contact" class="cta-pill" data-nav-link>Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Semantic Content -->
+    <main id="main-content">
+      <div id="journey-wrap"></div>
+    </main>
+
+    <!-- Fullscreen Case Study Drawer (C-S4) -->
+    <aside
+      id="case-drawer"
+      class="case-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="case-drawer-title"
+      hidden
+    >
+      <div class="case-drawer-backdrop" data-close-case></div>
+      <div class="case-drawer-sheet">
+        <div class="case-drawer-top">
+          <span class="drawer-stop-tag" id="case-drawer-tag">PROCESSED PACKET // CASE 01</span>
+          <button type="button" class="case-close-btn" data-close-case aria-label="Close case study">
+            CLOSE ESC ✕
+          </button>
+        </div>
+        <h3 id="case-drawer-title" class="case-drawer-title"></h3>
+        <p id="case-drawer-stack" class="case-drawer-stack"></p>
+        <div id="case-drawer-metrics" class="case-drawer-metrics"></div>
+        <ul id="case-drawer-bullets" class="case-drawer-bullets"></ul>
+        <blockquote id="case-drawer-takeaway" class="case-drawer-takeaway"></blockquote>
+        <div id="case-drawer-links" class="case-drawer-links"></div>
+      </div>
+    </aside>
+
+    <!-- Celebration Confetti Canvas Overlay -->
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+    <!-- Toast Notification -->
+    <div id="journey-toast" class="journey-toast" role="status" aria-live="polite" hidden>
+      <span class="j-toast-dot"></span>
+      <span id="journey-toast-msg"></span>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+

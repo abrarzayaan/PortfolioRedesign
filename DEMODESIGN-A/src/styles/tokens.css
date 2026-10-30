@@ -1,0 +1,40 @@
+:root {
+  /* Alternating Clean High-Contrast Editorial Stages */
+  --k-obsidian: #09090b;
+  --k-obsidian-elev: #111116;
+  --k-obsidian-card: #15151c;
+  --k-alabaster: #f7f6f2;
+  --k-paper-card: #ffffff;
+  --k-paper-muted: #eeece5;
+
+  /* Ink & Accents */
+  --k-text-light: #fafafa;
+  --k-text-light-muted: #a1a1aa;
+  --k-text-dark: #09090b;
+  --k-text-dark-muted: #4b4b55;
+
+  --k-lime: #c6ff3d;
+  --k-lime-deep: #4d7c0f;
+  --k-coral: #ff4d4d;
+
+  /* Borders */
+  --k-border-dark: rgba(255, 255, 255, 0.11);
+  --k-border-dark-strong: rgba(255, 255, 255, 0.22);
+  --k-border-light: rgba(9, 9, 11, 0.12);
+  --k-border-light-strong: rgba(9, 9, 11, 0.24);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout & Motion */
+  --k-max-width: 1320px;
+  --k-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --k-radius-sm: 10px;
+  --k-radius-md: 18px;
+  --k-radius-lg: 26px;
+  --k-radius-pill: 999px;
+
+  --ease-kinetic: cubic-bezier(0.19, 1, 0.22, 1);
+}

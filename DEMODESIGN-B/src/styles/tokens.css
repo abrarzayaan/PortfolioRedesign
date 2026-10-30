@@ -1,0 +1,32 @@
+:root {
+  /* Design B Palette — TASK.md exact specification */
+  --paper: #ede9df;
+  --paper-light: #f6f3eb;
+  --paper-card: #e5e0d3;
+
+  --ink: #101010;
+  --ink-secondary: #3b3a36;
+  --ink-muted: #66645e;
+
+  --grid-line: rgba(16, 16, 16, 0.08);
+  --border-ink: #101010;
+  --border-hairline: rgba(16, 16, 16, 0.22);
+
+  --vermilion: #ff4d1c;
+  --vermilion-soft: rgba(255, 77, 28, 0.1);
+
+  --blueprint: #1b3fd1;
+  --blueprint-deep: #132fa3;
+  --blueprint-grid: rgba(255, 255, 255, 0.12);
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --container-max: 1340px;
+  --gutter: clamp(1rem, 3vw, 2.5rem);
+  --nav-h: 4.25rem;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
