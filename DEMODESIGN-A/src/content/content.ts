@@ -49,7 +49,7 @@ export const HERO_COPY = {
 export const MANIFESTO_COPY = {
   kicker: '01 // IF YOU ONLY READ 30 SECONDS',
   scrubParagraph:
-    'Most developers start with “Which framework should we use?” I start with a different question: “Where is this business losing time, money, or trust — and which part of the system causes it?” Slow reports, a database that dies on busy days, stock that goes negative, numbers that don’t match between two dashboards: these are not bugs. They are architecture problems wearing a bug costume, and they are what I fix.',
+    'Most of start with “Which framework should we use?” I start with a different question: “Where is this business losing time, money, or trust — and which part of the system causes it?” Slow reports, a database that dies on busy days, stock that goes negative, numbers that don’t match between two dashboards: these are not bugs. They are architecture problems wearing a bug costume, and they are what I fix.',
   advantageNote:
     'I spent three years living inside the data of real enterprise clients, where a wrong number has a cost. A system is only as valuable as the correctness, speed, and trustworthiness of the data it produces.',
   comparisons: [
