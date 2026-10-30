@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="16" fill="#0B0B0F"/>
-  <path d="M10 46 Q 28 44, 34 30 T 54 16" stroke="#C6FF3D" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <circle cx="34" cy="30" r="10" fill="#FFFFFF" stroke="#0B0B0F" stroke-width="3"/>
-  <text x="34" y="33.5" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="9" fill="#0B0B0F">AZ</text>
-</svg>
-
