@@ -109,51 +109,17 @@ export function renderHero(): string {
   `;
 }
 
-export function initHeroAnimations(): void {
-  const reduced = motionPrefs.getState().reducedMotion;
-  const lineInners = document.querySelectorAll<HTMLElement>('#hero-h1 .line-inner');
-  const subcopy = document.getElementById('hero-subcopy');
-  const proxChars = Array.from(document.querySelectorAll<HTMLElement>('#hero-h1 .prox-char'));
-  const marqueeTrack = document.getElementById('hero-marquee-track');
+let heroEntranceStarted = false;
+let interactiveInitialized = false;
 
-  if (!reduced) {
-    gsap.from(lineInners, {
-      yPercent: 112,
-      duration: 1.0,
-      stagger: 0.1,
-      ease: 'kineticOut',
-      clearProps: 'transform',
-    });
+function initHeroInteractiveFeatures(): void {
+  if (interactiveInitialized) return;
+  interactiveInitialized = true;
 
-    if (subcopy) {
-      const splitSub = new SplitText(subcopy, { type: 'lines' });
-      gsap.from(splitSub.lines, {
-        y: 20,
-        autoAlpha: 0,
-        duration: 0.8,
-        stagger: 0.06,
-        delay: 0.18,
-        ease: 'power3.out',
-        onComplete: () => {
-          // Revert SplitText lines so responsive resizing always wraps cleanly
-          splitSub.revert();
-        },
-      });
-    }
-
-    gsap.from('.hero-stat-cell', {
-      y: 18,
-      autoAlpha: 0,
-      duration: 0.65,
-      stagger: 0.07,
-      delay: 0.28,
-      ease: 'power3.out',
-    });
-  }
-
-  // Zero-Reflow GPU-Composited Mouse Proximity Typography Effect
   const isCoarse = window.matchMedia('(pointer: coarse)').matches;
   const heroEl = document.getElementById('hero-h1');
+  const proxChars = Array.from(document.querySelectorAll<HTMLElement>('#hero-h1 .prox-char'));
+  const marqueeTrack = document.getElementById('hero-marquee-track');
 
   if (heroEl && !isCoarse && proxChars.length > 0) {
     interface CharNode {
@@ -178,6 +144,7 @@ export function initHeroAnimations(): void {
     }));
 
     const measureRelativeOffsets = () => {
+      if (!heroEl) return;
       const base = heroEl.getBoundingClientRect();
       heroRect = base;
       for (let i = 0; i < nodes.length; i++) {
@@ -187,8 +154,7 @@ export function initHeroAnimations(): void {
       }
     };
 
-    // Measure once after hero slide-in settles, and on container resize only (never on scroll!)
-    window.setTimeout(measureRelativeOffsets, 1050);
+    measureRelativeOffsets();
     const ro = new ResizeObserver(() => measureRelativeOffsets());
     ro.observe(heroEl);
 
@@ -214,13 +180,16 @@ export function initHeroAnimations(): void {
       }
     });
 
+    let isAnyActive = false;
     gsap.ticker.add((_, deltaTime) => {
       if (motionPrefs.getState().reducedMotion || document.hidden) return;
+      if (!pointerInside && !isAnyActive) return;
+
       const dt = Math.min(40, deltaTime || 16.67) / 16.67;
       const lerpFactor = 1 - Math.pow(1 - 0.22, dt);
       const radius = 165;
 
-      let anyActive = pointerInside;
+      isAnyActive = pointerInside;
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         if (pointerInside) {
@@ -230,7 +199,7 @@ export function initHeroAnimations(): void {
         }
 
         if (Math.abs(n.targetT - n.curT) > 0.002) {
-          anyActive = true;
+          isAnyActive = true;
           n.curT += (n.targetT - n.curT) * lerpFactor;
           const lift = (-n.curT * 7.5).toFixed(2);
           const scale = (1 + n.curT * 0.065).toFixed(3);
@@ -242,7 +211,6 @@ export function initHeroAnimations(): void {
           n.el.classList.remove('is-prox-lit');
         }
       }
-      void anyActive;
     });
   }
 
@@ -271,4 +239,106 @@ export function initHeroAnimations(): void {
       marqueeTrack.style.transform = `translate3d(${xPercent.toFixed(3)}%, 0, 0) skewX(${currentSkew.toFixed(2)}deg)`;
     });
   }
+}
+
+export function playHeroEntrance(): void {
+  if (heroEntranceStarted) return;
+  heroEntranceStarted = true;
+
+  const reduced = motionPrefs.getState().reducedMotion;
+  const lineInners = document.querySelectorAll<HTMLElement>('#hero-h1 .line-inner');
+  const subcopy = document.getElementById('hero-subcopy');
+  const metaBar = document.querySelector<HTMLElement>('#hero .hero-meta-bar');
+  const ctaGroup = document.querySelector<HTMLElement>('#hero .hero-cta-group');
+  const statCells = document.querySelectorAll<HTMLElement>('#hero .hero-stat-cell');
+
+  if (reduced) {
+    gsap.set(lineInners, { clearProps: 'transform,opacity' });
+    if (metaBar) gsap.set(metaBar, { clearProps: 'opacity' });
+    if (subcopy) gsap.set(subcopy, { clearProps: 'opacity' });
+    if (ctaGroup) gsap.set(ctaGroup, { clearProps: 'opacity' });
+    if (statCells.length) gsap.set(statCells, { clearProps: 'opacity' });
+    initHeroInteractiveFeatures();
+    return;
+  }
+
+  const tl = gsap.timeline({
+    defaults: { ease: 'power3.out', force3D: true },
+    onComplete: () => {
+      gsap.set(lineInners, { clearProps: 'transform' });
+      initHeroInteractiveFeatures();
+    },
+  });
+
+  // 1. Meta pill
+  if (metaBar) {
+    tl.fromTo(
+      metaBar,
+      { opacity: 0, y: -10 },
+      { opacity: 1, y: 0, duration: 0.65, clearProps: 'transform,opacity' },
+      0
+    );
+  }
+
+  // 2. The Hero Headline ("I architect the systems / your business grows on.")
+  tl.fromTo(
+    lineInners,
+    {
+      y: 44,
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1.15,
+      stagger: 0.14,
+      ease: 'power3.out',
+    },
+    0.06
+  );
+
+  // 3. Subcopy Paragraph
+  if (subcopy) {
+    tl.fromTo(
+      subcopy,
+      { opacity: 0, y: 22 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        clearProps: 'transform,opacity',
+      },
+      0.3
+    );
+  }
+
+  // 4. CTA buttons
+  if (ctaGroup) {
+    tl.fromTo(
+      ctaGroup,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.7, clearProps: 'transform,opacity' },
+      0.44
+    );
+  }
+
+  // 5. Stat cells
+  if (statCells.length) {
+    tl.fromTo(
+      statCells,
+      { opacity: 0, y: 18 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.07,
+        clearProps: 'transform,opacity',
+      },
+      0.52
+    );
+  }
+}
+
+export function initHeroAnimations(): void {
+  playHeroEntrance();
 }

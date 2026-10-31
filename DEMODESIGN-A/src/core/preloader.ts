@@ -4,7 +4,7 @@ import { motionPrefs } from './quality';
 /**
  * A-S0: Slot-Counter + Split-Shutter Curtain Reveal
  */
-export function runShutterPreloader(): Promise<void> {
+export function runShutterPreloader(onShutterOpen?: () => void): Promise<void> {
   return new Promise((resolve) => {
     const preloader = document.getElementById('preloader');
     const content = document.getElementById('preloader-content');
@@ -13,7 +13,15 @@ export function runShutterPreloader(): Promise<void> {
     const topShutter = preloader?.querySelector<HTMLElement>('.shutter-top');
     const bottomShutter = preloader?.querySelector<HTMLElement>('.shutter-bottom');
 
+    const finishPreloader = () => {
+      document.documentElement.classList.remove('is-loading');
+      if (preloader) preloader.style.display = 'none';
+      resolve();
+    };
+
     if (!preloader) {
+      document.documentElement.classList.remove('is-loading');
+      onShutterOpen?.();
       resolve();
       return;
     }
@@ -32,15 +40,14 @@ export function runShutterPreloader(): Promise<void> {
       },
       onComplete: () => {
         if (reduced) {
-          preloader.style.display = 'none';
-          resolve();
+          onShutterOpen?.();
+          finishPreloader();
           return;
         }
 
         const tl = gsap.timeline({
           onComplete: () => {
-            preloader.style.display = 'none';
-            resolve();
+            finishPreloader();
           },
         });
 
@@ -67,7 +74,10 @@ export function runShutterPreloader(): Promise<void> {
               ease: 'expo.inOut',
             },
             0.18
-          );
+          )
+          .add(() => {
+            onShutterOpen?.();
+          }, 0.42);
       },
     });
   });

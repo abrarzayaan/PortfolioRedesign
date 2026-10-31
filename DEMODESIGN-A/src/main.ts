@@ -8,7 +8,7 @@ import { initSmoothScroll } from './core/lenis';
 import { runShutterPreloader } from './core/preloader';
 
 import { initNavigation } from './sections/nav';
-import { initHeroAnimations, renderHero } from './sections/hero';
+import { initHeroAnimations, playHeroEntrance, renderHero } from './sections/hero';
 import { initPositioningAnimations, renderPositioning } from './sections/positioning';
 import { initServicesAnimations, renderServices } from './sections/services';
 import { initWorkInteractions, renderWork } from './sections/work';
@@ -56,9 +56,10 @@ async function bootstrap(): Promise<void> {
   initSpotlightCards();
   initNavigation();
 
-  await Promise.all([runShutterPreloader(), waitForFontsSafe()]);
+  // Wait for web fonts first (takes ~50-100ms)
+  await waitForFontsSafe();
 
-  initHeroAnimations();
+  // Pre-initialize downstream sections & calculate ScrollTriggers while preloader covers the screen
   initPositioningAnimations();
   initServicesAnimations();
   initWorkInteractions();
@@ -72,6 +73,13 @@ async function bootstrap(): Promise<void> {
 
   ScrollTrigger.sort();
   ScrollTrigger.refresh();
+
+  // Smoothly open shutter preloader and reveal hero with zero main-thread CPU interference
+  await runShutterPreloader(() => {
+    playHeroEntrance();
+  });
+
+  initHeroAnimations();
 }
 
 void bootstrap();

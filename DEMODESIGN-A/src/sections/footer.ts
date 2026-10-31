@@ -8,7 +8,7 @@ export function renderFooter(): string {
       <div class="k-container footer-row">
         <div class="footer-brand-col">
           <strong>© 2026 ${PROFILE_META.name}</strong>
-          <span>End-to-End Business Backend Architect · Built with GSAP 3.13 &amp; Lenis</span>
+          <span>End-to-End Business Backend Architect ·</span>
         </div>
 
         <div class="footer-clock-box">

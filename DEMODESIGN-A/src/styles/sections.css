@@ -342,7 +342,35 @@
 
 .line-inner {
   display: block;
-  will-change: transform;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Initial state during preloader to eliminate FOUC / text flicker */
+.is-loading .hero-meta-bar,
+.is-loading .line-inner,
+.is-loading #hero-subcopy,
+.is-loading .hero-cta-group,
+.is-loading .hero-stat-cell {
+  opacity: 0;
+}
+
+.is-loading .line-inner {
+  transform: translate3d(0, 48px, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-loading .hero-meta-bar,
+  .is-loading .line-inner,
+  .is-loading #hero-subcopy,
+  .is-loading .hero-cta-group,
+  .is-loading .hero-stat-cell {
+    opacity: 1 !important;
+  }
+  .is-loading .line-inner {
+    transform: none !important;
+  }
 }
 
 .prox-word {
@@ -350,11 +378,10 @@
   white-space: nowrap;
 }
 
-/* Pure GPU-composited proximity chars (transform driven by GSAP ticker, color via CSS) */
+/* Pure GPU-composited proximity chars (transform driven by GSAP ticker on hover, color via CSS) */
 .prox-char {
   display: inline-block;
   transition: color 0.16s ease;
-  will-change: transform;
 }
 
 .prox-char.is-prox-lit {
